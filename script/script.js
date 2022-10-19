@@ -68,11 +68,46 @@ const disableDirectionButton = (slide, className) => {
     document.querySelector(`${className}`).disabled = true;
     document.querySelector(`${className}`).style.cursor = "none";
   }
+
+  if (slide === 0) {
+    document.querySelector(`${className}`).disabled = false;
+    document.querySelector(`${className}`).style.cursor = "pointer";
+  }
 };
+
+// when I click the nav indicator, move to that slide
+
+dotsNav.addEventListener("click", (e) => {
+  // what indicator was clicked on?
+  const targetDot = e.target.closest("button");
+
+  const currentSlide = track.querySelector(".current-slide");
+  const currentDot = dotsNav.querySelector(".current-slide");
+  const targetIndex = dots.findIndex((dot) => dot === targetDot);
+  const targetSlide = slides[targetIndex];
+
+  if (targetIndex >= 0) {
+    currentDot.classList.remove("current-slide");
+    targetDot.classList.add("current-slide");
+  }
+
+  moveToSlide(track, currentSlide, targetSlide);
+  disableDirectionButton(targetSlide, ".carousel__button--right");
+
+  if (targetIndex === 0) {
+    disableLeftButton(prevSlide);
+    disableDirectionButton(targetIndex, ".carousel__button--right");
+  }
+});
 
 function disableLeftButton(slide) {
   if (slides.indexOf(slide) !== null) {
     document.querySelector(".carousel__button--left").disabled = true;
     document.querySelector(".carousel__button--left").style.cursor = "none";
+  }
+
+  if (slides.indexOf(slide) === slides[slides.length - 1]) {
+    document.querySelector(".carousel__button--right").disabled = true;
+    document.querySelector(".carousel__button--right").style.cursor = "none";
   }
 }
