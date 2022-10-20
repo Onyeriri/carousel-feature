@@ -28,8 +28,14 @@ const moveToSlide = (track, currentSlide, targetSlide) => {
 // when I click right, move slides to the left
 nextButton.addEventListener("click", (e) => {
   const currentSlide = track.querySelector(".current-slide");
+  const currentDot = dotsNav.querySelector(".current-slide");
 
   const nextSlide = currentSlide.nextElementSibling;
+
+  const slideIndex = slides.indexOf(nextSlide);
+  const targetDot = dots[slideIndex];
+
+  dotIndicator(currentDot, targetDot);
 
   moveToSlide(track, currentSlide, nextSlide);
   disableDirectionButton(nextSlide, ".carousel__button--right");
@@ -38,7 +44,12 @@ nextButton.addEventListener("click", (e) => {
 // when I click left, move slides to the left
 prevButton.addEventListener("click", (e) => {
   const currentSlide = track.querySelector(".current-slide");
+  const currentDot = dotsNav.querySelector(".current-slide");
   const prevSlide = currentSlide.previousElementSibling;
+  const slideIndex = slides.indexOf(prevSlide);
+  const targetDot = dots[slideIndex];
+
+  dotIndicator(currentDot, targetDot);
 
   moveToSlide(track, currentSlide, prevSlide);
   disableDirectionButton(prevSlide, ".carousel__button--left");
@@ -110,4 +121,9 @@ function disableLeftButton(slide) {
     document.querySelector(".carousel__button--right").disabled = true;
     document.querySelector(".carousel__button--right").style.cursor = "none";
   }
+}
+
+function dotIndicator(currentDot, targetDot) {
+  currentDot.classList.remove("current-slide");
+  targetDot.classList.add("current-slide");
 }
