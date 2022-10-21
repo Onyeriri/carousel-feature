@@ -10,7 +10,6 @@ const prevSlide = currentSlide.previousElementSibling;
 disableLeftButton(prevSlide);
 
 const slideWidth = slides[0].getBoundingClientRect().width;
-// console.log(track);
 
 // arrange the slides next to one another
 const setSlidePosition = (slide, index) => {
@@ -57,14 +56,9 @@ prevButton.addEventListener("click", (e) => {
 
 // when direction button disable when you get to the last image on the carousel
 const disableDirectionButton = (slide, className) => {
-  // console.log(slides.indexOf(slide));
-  // console.log(slides.indexOf(slides[slides.length - 1]));
-
   if (slides.indexOf(slide) < slides.indexOf(slides[slides.length - 1])) {
     document.querySelector(".carousel__button--right").disabled = false;
     document.querySelector(".carousel__button--right").style.cursor = "pointer";
-
-    // console.log("am in");
   }
 
   if (slides.indexOf(slide) > 0) {
