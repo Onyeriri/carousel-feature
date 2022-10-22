@@ -25,4 +25,16 @@ Moreover, after visiting different web application with similar functionality. I
 
 After planning and understanding various components and materials necessary to accomplish carousel feature functionality.
 
-Using
+A wireframe was generated during planning process to guide the building process. This was made possible with the use of online web application **Figma**.
+
+The functionality listed above in the planning process was successfully implemented in this stage during the carousel image feature.
+
+Furthermore, some feature that deemed important was equally implemented during the development process. For instance disabling the **Left** or **Right** direction button when it's the first or last picture in the slide.
+
+Finally, during the development process various mistake, error and bugs was encountered but was fixed thanks to debugging process. This will be discussed in the next paragraph.
+
+## Debugging
+
+It's expected to encounter challenges during a development process in a developer's life. But, with help of debugging process these challenges was tackled or eliminated. With the help of tools like google chrome and microsoft visual code editor (vscode) was pretty helpful during this process.
+
+Finally, the duck method was introduced at some point to better understand exactly what each part of the code was actually doing or supposed to be doing.
