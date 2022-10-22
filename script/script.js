@@ -81,7 +81,6 @@ const disableDirectionButton = (slide, className) => {
 };
 
 // when I click the nav indicator, move to that slide
-
 dotsNav.addEventListener("click", (e) => {
   // what indicator was clicked on?
   const targetDot = e.target.closest("button");
@@ -105,18 +104,22 @@ dotsNav.addEventListener("click", (e) => {
   }
 });
 
+// when the slides gets to the last or first picture disable the left or right button
 function disableLeftButton(slide) {
+  //disable the left button
   if (slides.indexOf(slide) !== null) {
     document.querySelector(".carousel__button--left").disabled = true;
     document.querySelector(".carousel__button--left").style.cursor = "none";
   }
 
+  //disable the right button
   if (slides.indexOf(slide) === slides[slides.length - 1]) {
     document.querySelector(".carousel__button--right").disabled = true;
     document.querySelector(".carousel__button--right").style.cursor = "none";
   }
 }
 
+// when I clicked on the indicator button make it an active indicator by assigning it an active class
 function dotIndicator(currentDot, targetDot) {
   currentDot.classList.remove("current-slide");
   targetDot.classList.add("current-slide");
