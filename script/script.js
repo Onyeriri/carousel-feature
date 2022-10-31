@@ -6,6 +6,7 @@ const dotsNav = document.querySelector(".carousel__nav");
 const dots = Array.from(dotsNav.children);
 const currentSlide = track.querySelector(".current-slide");
 const prevSlide = currentSlide.previousElementSibling;
+let slideIndex = 0;
 
 disableLeftButton(prevSlide);
 
@@ -123,4 +124,32 @@ function disableLeftButton(slide) {
 function dotIndicator(currentDot, targetDot) {
   currentDot.classList.remove("current-slide");
   targetDot.classList.add("current-slide");
+}
+
+function plusSlides(n) {
+  moveSlide(slideIndex + n);
+}
+
+// making slides automatic
+let timer = null;
+
+function setTimer() {
+  timer = setInterval(function () {
+    plusSlides(1);
+  }, 3000);
+}
+
+setTimer();
+
+function playPauseSlides() {
+  let playPauseBtn = document.getElementById("playPause");
+
+  if (timer === null) {
+    setTimer();
+    playPauseBtn.style.backgroundPositionY = "0px";
+  } else {
+    clearInterval(timer);
+    timer = null;
+    playPauseBtn.style.backgroundPositionY = "-33px";
+  }
 }
