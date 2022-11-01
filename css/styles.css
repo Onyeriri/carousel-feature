@@ -103,6 +103,51 @@ h1 {
   /* background: red; */
 }
 
+#playPause {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  background-image: url(../images/playPause.png);
+  background-repeat: no-repeat;
+  z-index: 5;
+  background-size: cover;
+  margin: 5px;
+  cursor: pointer;
+}
+
+#playPause:hover {
+  opacity: 0.7;
+}
+
+.carousel__track-container .moveLeftNextSlide {
+  animation-name: moveLeftNext;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveLeftCurrent {
+  from {
+    margin-left: 0;
+    opacity: 1;
+  }
+  to {
+    margin-left: -100%;
+    opacity: 1;
+  }
+}
+
+@keyframes moveLeftNext {
+  from {
+    margin-left: 100%;
+    opacity: 1;
+  }
+  to {
+    margin-left: 0%;
+    opacity: 1;
+  }
+}
+
 .footer {
   width: 100%;
   margin: 1em 0 0 0;

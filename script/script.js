@@ -130,6 +130,55 @@ function plusSlides(n) {
   moveSlide(slideIndex + n);
 }
 
+function moveSlide(n) {
+  let i = 0;
+  let current;
+  let next;
+
+  let moveSlideAnimClass = {
+    forCurrent: "",
+    forNext: "",
+  };
+
+  if (n > slideIndex) {
+    if (n > slides.length) {
+      n = 0;
+      // console.log(slides.length);
+    }
+    moveSlideAnimClass.forCurrent = "moveLeftCurrentSlide";
+    moveSlideAnimClass.forNext = "moveLeftNextSlide";
+  } else if (n < slideIndex) {
+    if (n < 0) {
+      n = slides.length - 1;
+    }
+
+    moveSlideAnimClass.forCurrent = "moveRightCurrentSlide";
+    moveSlideAnimClass.forNext = "moveRightPrevSlide";
+  }
+
+  if (n !== slideIndex) {
+    next = slides[n];
+    current = slides[slideIndex];
+    // console.log(slideIndex);
+
+    for (i = 0; i < slides.length; i++) {
+      slides[i].className = "carousel__slide";
+    }
+
+    // current.classList.add(moveSlideAnimClass.forCurrent);
+    // next.classList.add(moveSlideAnimClass.forNext);
+
+    // console.log(current.classList, n);
+    if (n < 3) {
+      slideIndex = n;
+      console.log(slideIndex);
+    } else {
+      slideIndex = 0;
+      console.log(slideIndex);
+    }
+  }
+}
+
 // making slides automatic
 let timer = null;
 
