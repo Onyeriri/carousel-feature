@@ -134,14 +134,12 @@ function moveSlide(n) {
   let i = 0;
   let current;
   let next;
-
   let moveSlideAnimClass = {
     forCurrent: "",
     forNext: "",
   };
-
   if (n > slideIndex) {
-    if (n > slides.length) {
+    if (n >= slides.length) {
       n = 0;
       // console.log(slides.length);
     }
@@ -151,31 +149,22 @@ function moveSlide(n) {
     if (n < 0) {
       n = slides.length - 1;
     }
-
     moveSlideAnimClass.forCurrent = "moveRightCurrentSlide";
     moveSlideAnimClass.forNext = "moveRightPrevSlide";
   }
 
-  if (n !== slideIndex) {
+  if (n != slideIndex) {
     next = slides[n];
     current = slides[slideIndex];
-    // console.log(slideIndex);
-
     for (i = 0; i < slides.length; i++) {
       slides[i].className = "carousel__slide";
+      slides[i].style.opacity = 0;
     }
 
-    // current.classList.add(moveSlideAnimClass.forCurrent);
-    // next.classList.add(moveSlideAnimClass.forNext);
-
-    // console.log(current.classList, n);
-    if (n < 3) {
-      slideIndex = n;
-      console.log(slideIndex);
-    } else {
-      slideIndex = 0;
-      console.log(slideIndex);
-    }
+    console.log(next, "\n", current);
+    current.classList.add(moveSlideAnimClass.forCurrent);
+    next.classList.add(moveSlideAnimClass.forNext);
+    slideIndex = n;
   }
 }
 
@@ -185,7 +174,7 @@ let timer = null;
 function setTimer() {
   timer = setInterval(function () {
     plusSlides(1);
-  }, 3000);
+  }, 2000);
 }
 
 setTimer();
